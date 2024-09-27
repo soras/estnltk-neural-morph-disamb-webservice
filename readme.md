@@ -2,7 +2,7 @@
 
 ### Setting up the model
 
-Before setting up the web service, you need to obtain the model. You can download model files from [https://entu.keeleressursid.ee/api2/file-24912](https://entu.keeleressursid.ee/api2/file-24912). Unpack the zipped content of `/neural_morph_disamb/softmax_emb_cat_sum_23-08-2019/output/` into local directory `softmax_emb_cat_sum/output/`. After all necessary model files have been assembled, the local directory  `softmax_emb_cat_sum` should have the following structure:
+Before setting up the web service, you need to obtain the model. You can download model files from [`https://s3.hpc.ut.ee/estnltk/estnltk_resources/neural_morph_softmax_emb_cat_sum_2019-08-23.zip`](https://s3.hpc.ut.ee/estnltk/estnltk_resources/neural_morph_softmax_emb_cat_sum_2019-08-23.zip). Unpack the zipped content of `/neural_morph_disamb/softmax_emb_cat_sum_23-08-2019/output/` into local directory `softmax_emb_cat_sum/output/`. After all necessary model files have been assembled, the local directory  `softmax_emb_cat_sum` should have the following structure:
 
 		softmax_emb_cat_sum/
 		├── __init__.py
