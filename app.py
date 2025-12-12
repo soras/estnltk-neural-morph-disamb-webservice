@@ -1,6 +1,8 @@
 import logging
+from typing import Optional
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from estnltk_core.common import load_text_class
@@ -23,16 +25,16 @@ Text = load_text_class()
 tagger = SoftmaxEmbCatSumTagger(output_layer='neural_morph_analysis',
                                 model_dir=settings.model_path)
 
-class Request(BaseModel):
+class RequestModel(BaseModel):
     text: str = Field(...)
     meta: dict = Field(...)
     layers: str = Field(...)
-    output_layer: str = Field(None)
-    parameters: dict = Field(None)
+    output_layer: Optional[str] = Field(None)
+    parameters: Optional[dict] = Field(None)
 
 
 @app.post('/estnltk/tagger/neural_morph_disamb')
-def tagger_neural_morph_disamb(body: Request):
+def tagger_neural_morph_disamb(body: RequestModel):
     if len(str(body)) > settings.max_content_length:
         raise HTTPException(status_code=413, detail="Request body too large")
     try:
@@ -55,12 +57,12 @@ def tagger_neural_morph_disamb(body: Request):
         raise HTTPException(status_code=500, detail='Internal error at input processing')
 
 
-@app.get('/estnltk/tagger/neural_morph_disamb/about')
+@app.get('/estnltk/tagger/neural_morph_disamb/about', response_class=HTMLResponse)
 def tagger_neural_morph_disamb_about():
     return 'Tags neural morph disambiguation using EstNLTK NeuralMorphTagger\'s webservice. '+\
            'Uses softmax emb_cat_sum model.'
 
 
-@app.get('/estnltk/tagger/neural_morph_disamb/status')
+@app.get('/estnltk/tagger/neural_morph_disamb/status', response_class=HTMLResponse)
 def tagger_neural_morph_disamb_status():
     return 'OK'
