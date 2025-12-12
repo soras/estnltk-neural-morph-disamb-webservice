@@ -1,0 +1,8 @@
+softmax_emb_cat_sum/output/
+!softmax_emb_cat_sum/output/readme.md
+*.env
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+.DS_Store

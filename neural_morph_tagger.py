@@ -7,8 +7,7 @@
 import importlib
 import os, os.path
 
-from estnltk import Layer
-from estnltk.taggers import Tagger
+from estnltk_core import Layer, Tagger
 
 from vabamorf_2_neural import neural_model_tags
 from neural_2_vabamorf import vabamorf_tags

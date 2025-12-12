@@ -1,0 +1,10 @@
+softmax_emb_cat_sum/output/
+*.env
+.git/
+.gitignore
+*.md
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+.DS_Store
